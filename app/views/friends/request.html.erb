@@ -1,0 +1,28 @@
+<div class="page-header">
+<h1>Requests</h1>
+<ul class="nav nav-list">
+  <li>  <%= link_to "Home", root_path %> </li>
+</ul>
+</div>
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th>Avatar</th>
+      <th>Name</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @friends.each do |p| %>
+      <tr>
+        <td><%= image_tag avatar.file.url(:small) %></td>
+        <td><%= p.full_name %></td>
+        <td>
+          
+          <%= link_to "Follow", friend_path(p), :method => :create, :confirm => "sure man?" %>
+          |
+          <%= link_to "Show", friend_path(p) %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

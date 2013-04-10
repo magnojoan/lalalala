@@ -1,0 +1,6 @@
+<%= simple_form_for(friend) do |f| %>
+  <%= f.input :amount %>
+   <%= f.input :name %>
+  <%= f.association :interval %>
+  <%= f.submit "Submit" %>
+<% end %>

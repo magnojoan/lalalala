@@ -1,0 +1,28 @@
+<div class="page-header">
+<h1>Tweets</h1>
+<ul class="nav nav-list">
+  <li>  <%= link_to "Home", root_path %> </li>
+  <li><%= link_to "Add Tweet", new_tweet_path %></li>
+</ul>
+</div>
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th>Tweet</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @tweets.each do |p| %>
+      <tr>
+        <td><%= p.message %></td>
+        <td>
+          <%= link_to "Edit", edit_tweet_path(p) %>
+          |
+          <%= link_to "Destroy", tweet_path(p), :method => :delete, :confirm => "Are you sure you want to delete this tweet?" %>
+          |
+          <%= link_to "Show", tweet_path(p) %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
