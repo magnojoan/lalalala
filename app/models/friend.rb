@@ -7,7 +7,7 @@ class Friend < ActiveRecord::Base
  belongs_to :primary_user, :class_name => 'User', :foreign_key => "primary_user_id"
 belongs_to :follower, :class_name => 'User', :foreign_key => "follower_id"
 
-before_save :turnToTrue
+before_create :turnToTrue
 
 def turnToTrue
 	self.approved = false
