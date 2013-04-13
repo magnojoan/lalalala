@@ -8,7 +8,6 @@ attr_accessor :photo_updated_at
 
    belongs_to :user
 
-
   validates :name, :presence => true
   validates :user_id, :presence => true
     has_attached_file :file, :styles => { :small => "50x50#", :medium => "150x150#" }

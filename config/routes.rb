@@ -1,15 +1,24 @@
 Twitter::Application.routes.draw do
   devise_for :users
 
-resources :users, :only => [:edit, :update]
-resources :tweets
-resources :friends
+  resources :users, :only => [:edit, :update, :index]
+resources :tweets do
+collection do
+post :all
+end
+end
+resources :friends do
+collection do
+post :request
+end
+member do
+post :follow
+end
+end
 resources :avatars
+root to: "pages#index"
 
-match "/friends/request", :to => "friends#request"
-match "/friends/:id", :to => "friends#follow"
-match "/tweets/all", :to => "tweets#all"
-
-  root to: "pages#index"
+match "/pages" => "pages#friendindex"
+match "/admin/friends/create/:id" => "friends#create"
 end
 

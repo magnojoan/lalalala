@@ -1,6 +1,9 @@
 <%= simple_form_for(friend) do |f| %>
-  <%= f.input :amount %>
-   <%= f.input :name %>
-  <%= f.association :interval %>
+  <%= f.input :approved, as => :hidden %>
+    <%= f.association, :follower_id,  as => :hidden %>
+    <%= f.association :primary_user_id,  as => :hidden %>
+
+  <%= f.input :message %>
+
   <%= f.submit "Submit" %>
 <% end %>

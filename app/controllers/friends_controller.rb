@@ -2,10 +2,10 @@ class FriendsController < ApplicationController
 	  before_filter :authenticate_user!
 
   def index
-   @friendlist = Friend.where(:primary_user_id => current_user.id, :approved => true)
+   @friends = Friend.where(:primary_user_id => current_user.id, :approved => true)
   end
 
-    def request
+    def requests
       @friends = Friend.where(:primary_user_id => current_user.id, :approved => false)
     end
 
@@ -27,10 +27,9 @@ class FriendsController < ApplicationController
 
   def create
     @friend = Friend.create(params[:friend])
-    @requester = Friend.find(params[:id])
+    @requester = User.find(params[:id])
     @friend.primary_user_id = current_user.id
     @friend.friend_id = requester.id
-    @friend.approved = false
     if @friend.save
       redirect_to friends_path
     #else

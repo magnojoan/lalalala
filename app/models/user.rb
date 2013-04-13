@@ -27,7 +27,7 @@ validates_attachment :file, :content_type => { :content_type => ["image/jpg", "i
   has_many :direct_friends, :through => :friends, :conditions => "approved = true", :source => :follower
   has_many :inverse_friends, :through => :inverse_friendships, :conditions => "approved = true", :source => :primary_user
   has_many :pending_friends, :through => :friends, :conditions => "approved = false", :foreign_key => "primary_user_id", :source => :primary_user
-has_many :requested_friendships, :through => :inverse_friendships, :foreign_key => “follower_id”, :conditions => "approved = false", :source => :primary_user
+has_many :requested_friendships, :through => :inverse_friendships, :foreign_key => "follower_id", :conditions => "approved = false", :source => :primary_user
 
   def friends
     direct_friends | inverse_friends
