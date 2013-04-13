@@ -25,7 +25,7 @@
   <tbody>
     <% @tweets.each do |p| %>
       <tr>
-        <td><%= p.user.full_name %></td>
+        <td><%= p.user.full_name, %></td>
         <td><%= image_tag p.user.file.url(:medium) %></td>
         <td><%= p.message %></td>
         <td>

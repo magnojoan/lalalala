@@ -18,8 +18,8 @@
         <td>
       <%= simple_form_for @friend do |f| %>
   <%= f.input :approved, :as => :hidden %>
-    <%= f.association :follower, :as => :hidden  %>
-    <%= f.association :primary_user, :as => :hidden %>
+    <%= f.association :follower, :as => :hidden%>
+    <%= f.association :primary_user, :as => :hidden  %>
   <%= f.submit "Follow" %>
 <% end %>
 
