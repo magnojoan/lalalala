@@ -5,9 +5,11 @@ class PagesController < ApplicationController
     @avatars = Avatar.where(:user_id => current_user)
       @tweets = []
     @friends = Friend.where(:primary_user_id => current_user.id)
+    @friends.push(current_user)
     @friends.each do |f|
       @tweets += Tweet.where(:user_id => f.id)
     end
+
   end
 
   def friendindex
